@@ -1,0 +1,44 @@
+{
+  "name": "dsh-proactive-persona",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin: personality-driven proactive conversation (Agent autonomy)",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "files": [
+    "src",
+    "examples",
+    "cordis.example.yml",
+    "DESIGN.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "smoke": "node --import tsx/esm examples/smoke-load.ts",
+    "e2e": "node --import tsx/esm examples/e2e.ts",
+    "demo": "node --import tsx/esm examples/demo-live.ts",
+    "e2e:deepseek": "node --import tsx/esm examples/e2e-deepseek.ts"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "agent",
+    "proactive",
+    "persona",
+    "autonomy"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-llm": "*",
+    "@deepseek-ai/dsh-session": "*",
+    "@deepseek-ai/dsh-commands": "*",
+    "@deepseek-ai/schemastery": "*"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}

@@ -1,0 +1,21 @@
+# deps / build
+node_modules/
+dist/
+lib/
+*.tsbuildinfo
+.dsh-build/
+
+# secrets — never commit keys
+.env
+.env.*
+*.key
+credentials.json
+cordis.local.yml
+cordis.private.yml
+
+# logs / OS
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,40 @@
+# Development overlay for local plugin loading.
+# Usage (from a DeepSeek Harness checkout):
+#   pnpm dsh --profile web --patch /absolute/path/to/dsh-proactive-persona/cordis.example.yml --no-open
+#
+# Replace `name` with the absolute path of this repo's src/index.ts.
+
+- insert:
+    - id: proactive-persona
+      name: '/absolute/path/to/dsh-proactive-persona/src/index.ts'
+      config:
+        persona:
+          name: '阿深'
+          traits: ['好奇', '体贴', '偶尔毒舌', '记得你说过的事']
+          tone: 'warm-casual'
+          language: 'zh-CN'
+          initiative: 0.65
+          topics: ['工程进展', '读书', '效率工具']
+          openers:
+            - '刚才这边有点空，要不要聊聊 {topic}？'
+            - '{name}路过：最近 {topic} 还顺利吗？'
+            - '想起你之前提过——{topic} 后来怎么样了？'
+        policy:
+          quietHours: ['23:00-08:00']
+          minIntervalMinutes: 45
+          maxPerDay: 6
+          respectFocus: true
+        triggers:
+          idleMinutes: 30
+          tickSeconds: 60
+          clockRules: ['09:10', '21:30']
+          goalStallMinutes: 90      # 目标停滞 N 分钟后跟进；0 关闭
+          externalEnabled: false    # 需宿主挂载 webhookRuntime
+          externalKind: 'proactive-signal'
+        planner:
+          enabled: false          # 设 true 并填 apiKey 后启用 LLM 规划
+          baseUrl: 'https://api.deepseek.com/v1'
+          apiKey: ''              # 建议用环境变量注入，勿提交仓库
+          model: 'deepseek-chat'
+          temperature: 0.8
+          maxTokens: 256
